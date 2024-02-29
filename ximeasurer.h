@@ -232,42 +232,7 @@ namespace TempLat {
         return Area;
     };
 
-   /* template<class Model>
-    double line(Model& model)
-    {
-        bool test;
-        auto phi = model.fldS(0_c);
-        double amountDW = 0;
-        srand(time(0));
-       for(int ii=0; ii<500; ii++){
-        int xyzplane = rand() % 3;
-        int g1 = (rand() % N);
-        int g2 = (rand() % N);
-
-        if(xyzplane == 0){
-            for(int coord = 0; coord < N; coord++){
-                if(((coord < (N-1)) && (phi(test, {coord, g1, g2})/phi(test, {coord+1, g1, g2}) < 0)) || ((coord == (N-1)) && (phi(test, {coord, g1, g2})/phi(test, {0, g1, g2}) < 0))){
-                    amountDW++;
-                };
-            };
-        } else if (xyzplane == 1){
-            for(int coord = 0; coord < N; coord++){
-                if(((coord < (N-1)) && (phi(test, {g1, coord, g2})/phi(test, {g1, coord+1, g2}) < 0)) || ((coord == (N-1)) && (phi(test, {g1, coord, g2})/phi(test, {g1, 0, g2}) < 0))){
-                    amountDW++;
-                };
-            };
-        } else{
-            for(int coord = 0; coord < N; coord++){
-                if(((coord < (N-1)) && (phi(test, {g1, g2, coord})/phi(test, {g1, g2, coord+1}) < 0)) || ((coord == (N-1)) && (phi(test, {g1, g2, coord})/phi(test, {g1, g2, 0}) < 0))){
-                    amountDW++;
-                };
-            };
-        }
-       };
-        
-
-        return amountDW/500;
-    };*/
+  
 
     template<class Model>
     double line(Model& model)
@@ -286,8 +251,6 @@ namespace TempLat {
             int g2 = starts[1] + (rand() % sizes[1]);
 
             for(int coord = 0; coord < N; coord++){
-                sayMPI << "{" << g1 << ", " << g2 << ", " << coord << "} = " << phi(test,{g1,g2,coord});
-                sayMPI << "{" << g1 << ", " << g2 << ", " << coord << "} = " << xifunction.data(phi,{g1,g2,coord});
                 if(((coord < (N-1)) && (phi(test, {g1, g2, coord})/phi(test, {g1, g2, coord+1}) < 0)) || ((coord == (N-1)) && (phi(test, {g1, g2, coord})/phi(test, {g1, g2, 0}) < 0))){
                     amountDW++;
                 };
@@ -434,36 +397,7 @@ namespace TempLat {
         return Area;
     };
 
-    /* template<class Model>
-    double line2D(Model& model)
-    {
-        
-        bool test;
-        auto phi = model.fldS(0_c);
-        double amountDW = 0;
-        srand(time(0));
-       for(int ii=0; ii<500; ii++){
-        int xyzplane = rand() % 2;
-        int g1 = (rand() % N);
-        
-        if(xyzplane == 0){
-            for(int coord = 0; coord < N; coord++){
-                if(((coord < (N-1)) && (phi(test, {coord, g1})/phi(test, {coord+1, g1}) < 0)) || ((coord == (N-1)) && (phi(test, {coord, g1})/phi(test, {0, g1}) < 0))){
-                    amountDW++;
-                };
-            };
-        } else {
-            for(int coord = 0; coord < N; coord++){
-                if(((coord < (N-1)) && (phi(test, {g1, coord})/phi(test, {g1, coord+1}) < 0)) || ((coord == (N-1)) && (phi(test, {g1, coord})/phi(test, {g1, 0}) < 0))){
-                    amountDW++;
-                };
-            };
-        } 
-       };
-        
-
-        return amountDW/500;
-    };*/
+   
 
     template<class Model>
     double line2D(Model& model)
