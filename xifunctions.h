@@ -38,9 +38,6 @@ namespace TempLat {
 
         template<typename R>
         double data(R r, std::vector<ptrdiff_t> coords){ //used to store an entity directly to a dataset, using it's own name.
-            /*ConfirmSpace::apply(r,r.getToolBox()->mLayouts.getConfigSpaceLayout(), SpaceStateInterface::SpaceType::Configuration);
-            GhostsHunter::apply(r);
-            return Data(r,r.getToolBox()->mNDimensions-1,coords);*/
 
             auto toolBox = r.getToolBox();
 
@@ -55,38 +52,7 @@ namespace TempLat {
         }
 
 
-        //To save our fields, we use the fact that the last dimension is not parallelised.
-        //We iterate over the first N-1 dimensions, and for each of these we save the whole
-        //last dimension to file.
-        template<typename R>
-        double Data(R r, int dim,  std::vector<ptrdiff_t> crds)
-        {
-            auto toolBox = r.getToolBox();
-
-            auto& it = toolBox->itX();
-            
-            
-            ptrdiff_t offset = r.getJumps().getTotalOffsetFromSpatialCoordinates(crds);
-
-            return r.get(offset);
-            /*
-            std::vector<ptrdiff_t> coords;
-            //for(size_t i = crds.size()-1; i > 0; i--) coords.emplace_back( crds[i]);
-            for(size_t i = 0; i <crds.size()-1 ; i++) coords.emplace_back( crds[i]);
-            double endpoint = crds[crds.size()-1];
-            
-            auto toolBox = r.getToolBox();
-
-            auto starts =  toolBox->mLayouts.getConfigSpaceStarts(); //Local mpi offset.
-            auto sizes =  toolBox->mLayouts.getConfigSpaceSizes(); //Local mpi sizes.
-
-            coords.emplace_back(0); //look at index 0 in the last dimension. The next nGrid[last dimension] points are stored continuously.
-            ptrdiff_t offset = r.getJumps().getTotalOffsetFromSpatialCoordinates(coords);
-
-            //alldata.emplace_back(sdata);
-            return r.get(offset + endpoint);
-            */
-        }
+       
 
     //std::vector<std::vector<double>> alldata;
     private:
