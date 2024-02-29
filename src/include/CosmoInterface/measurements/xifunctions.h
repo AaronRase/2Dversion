@@ -38,13 +38,6 @@ namespace TempLat {
 
         template<typename R>
         double data(R r, std::vector<ptrdiff_t> coords){ //used to store an entity directly to a dataset, using it's own name.
-
-            auto toolBox = r.getToolBox();
-
-        
-            auto starts =  toolBox->mLayouts.getConfigSpaceStarts(); //Local mpi offset.
-            auto sizes =  toolBox->mLayouts.getConfigSpaceSizes(); //Local mpi sizes.
-            
             
             ptrdiff_t offset = r.getJumps().getTotalOffsetFromSpatialCoordinates(coords);
 
