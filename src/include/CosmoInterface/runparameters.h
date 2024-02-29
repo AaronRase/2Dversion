@@ -87,7 +87,7 @@ namespace TempLat {
             // NOTE: We must have kIR=2*pi/lside for consistency.
 
             dx = lSide / N; // Lattice spacing
-            kUV = std::sqrt(2) * Constants::pi<T> / dx; //Maximum momenta in the lattice //our own contribution
+            kUV = std::sqrt(2) * Constants::pi<T> / dx; //Maximum momenta in the lattice //our own contribution (changed 3 to 2)
 
             // Now we see if the user wants to save the simulation at the end of the run. This is
             // specified by specifying a path different from the Constants::defaultString. If not
